@@ -13,15 +13,17 @@ homepage: "https://github.com/garrigue/lablgtk"
 bug-reports: "https://github.com/garrigue/lablgtk/issues"
 dev-repo: "git+https://github.com/garrigue/lablgtk.git"
 doc: "https://garrigue.github.io/lablgtk/lablgtk3-sourceview3"
-license: "LGPL with linking exception"
+license: "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
 
 depends: [
-  "ocaml"                {         >= "4.05.0" }
+  "ocaml"                {         >= "4.09.0" }
   "dune"                 {         >= "1.8.0"  }
   "lablgtk3"             {          = version  }
-  # "conf-gtksourceview4"  { build & >= "0"      }
+  "conf-gtksourceview4"  { build & >= "0"      }
+  "camlp-streams"        { build               }
 ]
 
 build: [
+  [ "dune" "subst"] {pinned}
   [ "dune" "build" "-p" name "-j" jobs ]
 ]
