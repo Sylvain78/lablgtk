@@ -18,7 +18,7 @@
  (targets
    cflag-gtksourceview-4.sexp
    clink-gtksourceview-4.sexp)
- (action (run dune_config -pkg gtksourceview-4 -version 4.2.0)))
+ (action (run dune_config -pkg gtksourceview-4 -version 4.8.4)))
 
 (rule
  (targets cflag-extraflags.sexp)
