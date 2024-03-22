@@ -29,7 +29,11 @@
 #else
 #if defined(HAS_GTKQUARTZ)
 #else
+#if defined(__HAIKU__)
+#include <gdk/gdkwayland.h>
+#else
 #include <gdk/gdkx.h>
+#endif
 #endif
 #endif
 #include <caml/mlvalues.h>
@@ -89,6 +93,8 @@ value ml_gdk_get_platform()
   return MLTAG_WIN32;
 #elif defined(GDK_WINDOWING_QUARTZ)
   return MLTAG_QUARTZ;
+#elif defined(GDK_WINDOWING_WAYLAND)
+  return MLTAG_WAYLAND;
 #else
   return MLTAG_X11;
 #endif
@@ -240,7 +246,7 @@ ML_0 (GDK_ROOT_PARENT, Val_GdkWindow)
 ML_1 (gdk_window_foreign_new, GdkNativeWindow_val, Val_GdkWindow)
 */
 
-#if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ)
+#if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ) || defined(__HAIKU__)
 CAMLprim value ml_GDK_WINDOW_XID()
 {
  ml_raise_gdk ("ml_GDK_WINDOW_XID: only for X11");
@@ -421,7 +427,7 @@ CAMLprim value copy_xdata (gint format, void *xdata, gulong nitems)
 CAMLprim value ml_gdk_property_get (value window, value property,
                            value length, value pdelete)
 {
-#if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ)
+#if defined(_WIN32) || defined(__CYGWIN__) || defined(HAS_GTKQUARTZ) || defined(__HAIKU__)
   return Val_unit; /* not supported */
 #else
     GdkAtom atype;

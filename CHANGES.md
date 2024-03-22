@@ -1,4 +1,6 @@
 LablGTK changes log
+2024.03.22 [Sylvain Kerjean]
+  * Continuing of gtksourceview4 bindings
 
 ## In Lablgtk-3.1.4
 
@@ -49,6 +51,9 @@ LablGTK changes log
   * headers changed again in ocaml 4.10.0beta2
   * fix C compilation warnings
   * fix SourceMarkAttributes.new_attribute
+
+2020.01.18 [Emilio]
+  * Beginnings of gtksourceview4 bindings
 
 2020.01.14 [Jacques]
   * remove GtkDialog#has_separator property (report by Thomas Leonard, #68)
