@@ -35,7 +35,7 @@ nopromote:
 	dune build @all --ignore-promoted-rules
 
 # We first pin lablgtk3 as to avoid problems with parallel make
-OPAM_PKGS=lablgtk3 lablgtk3-sourceview3 lablgtk3-sourceview4 lablgtk3-goocanvas2 lablgtk3-rsvg2 lablgtk3-gtkspell3
+OPAM_PKGS=lablgtk3 lablgtk3-sourceview4 lablgtk3-goocanvas2 lablgtk3-rsvg2 lablgtk3-gtkspell3
 
 opam:
 	for pkg in $(OPAM_PKGS) ; do \
